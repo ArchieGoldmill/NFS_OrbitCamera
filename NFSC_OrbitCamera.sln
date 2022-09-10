@@ -19,8 +19,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug Carbon|x64.ActiveCfg = Debug Carbon|x64
 		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug Carbon|x64.Build.0 = Debug Carbon|x64
-		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug Carbon|x86.ActiveCfg = Release Carbon|Win32
-		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug Carbon|x86.Build.0 = Release Carbon|Win32
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug Carbon|x86.ActiveCfg = Debug Carbon|Win32
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug Carbon|x86.Build.0 = Debug Carbon|Win32
 		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug MW|x64.ActiveCfg = Debug MW|x64
 		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug MW|x64.Build.0 = Debug MW|x64
 		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug MW|x86.ActiveCfg = Debug MW|Win32
