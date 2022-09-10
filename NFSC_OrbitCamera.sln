@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NFSC_OrbitCamera", "NFSC_OrbitCamera\NFSC_OrbitCamera.vcxproj", "{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug Carbon|x64 = Debug Carbon|x64
+		Debug Carbon|x86 = Debug Carbon|x86
+		Debug MW|x64 = Debug MW|x64
+		Debug MW|x86 = Debug MW|x86
+		Release Carbon|x64 = Release Carbon|x64
+		Release Carbon|x86 = Release Carbon|x86
+		Release MW|x64 = Release MW|x64
+		Release MW|x86 = Release MW|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug Carbon|x64.ActiveCfg = Debug Carbon|x64
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug Carbon|x64.Build.0 = Debug Carbon|x64
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug Carbon|x86.ActiveCfg = Release Carbon|Win32
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug Carbon|x86.Build.0 = Release Carbon|Win32
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug MW|x64.ActiveCfg = Debug MW|x64
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug MW|x64.Build.0 = Debug MW|x64
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug MW|x86.ActiveCfg = Debug MW|Win32
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Debug MW|x86.Build.0 = Debug MW|Win32
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Release Carbon|x64.ActiveCfg = Release Carbon|x64
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Release Carbon|x64.Build.0 = Release Carbon|x64
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Release Carbon|x86.ActiveCfg = Release Carbon|Win32
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Release Carbon|x86.Build.0 = Release Carbon|Win32
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Release MW|x64.ActiveCfg = Release MW|x64
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Release MW|x64.Build.0 = Release MW|x64
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Release MW|x86.ActiveCfg = Release MW|Win32
+		{F236E62F-9F99-4EE3-9F23-AEF3FDA04FAF}.Release MW|x86.Build.0 = Release MW|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66E99811-E006-4ABF-AD62-B349C8564FF7}
+	EndGlobalSection
+EndGlobal
