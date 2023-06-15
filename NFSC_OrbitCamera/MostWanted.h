@@ -3,7 +3,7 @@
 namespace Game
 {
 	const int Entry = 0x007C4040;
-	const char* Name = "NFSMW - Orbit Camera 1.0";
+	const char* Name = "NFSMW - Orbit Camera 1.1";
 	const char* Error = "This .exe is not supported.\nPlease use v1.3 English speed.exe (5,75 MB (6.029.312 bytes)).";
 	const char* IniName = "NFSMWOrbitCamera.ini";
 

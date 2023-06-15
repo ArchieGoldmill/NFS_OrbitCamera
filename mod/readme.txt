@@ -1,4 +1,4 @@
-Need for Speed - Orbit car camera 1.0
+Need for Speed - Orbit car camera 1.1
 
 Description:
 This mod allows to rotate camera around the car while driving around.
@@ -13,5 +13,7 @@ How to install:
 
 Distribution:
 You are NOT allowed to distribute or reupload this mod.
+
+For any questions or details on how to use - join my Discord server (https://discord.com/invite/DxC6Fyf).
 
 Made by ARCHIE

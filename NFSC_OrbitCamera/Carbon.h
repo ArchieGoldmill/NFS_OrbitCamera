@@ -3,7 +3,7 @@
 namespace Game
 {
 	const int Entry = 0x0087E926;
-	const char* Name = "NFSC - Orbit Camera 1.0";
+	const char* Name = "NFSC - Orbit Camera 1.1";
 	const char* Error = "This .exe is not supported.\nPlease use v1.4 English nfsc.exe (6,88 MB (7.217.152 bytes)).";
 	const char* IniName = "NFSCOrbitCamera.ini";
 

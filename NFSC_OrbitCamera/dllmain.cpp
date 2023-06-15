@@ -3,6 +3,12 @@
 #include "includes/IniReader/IniReader.h"
 #include "includes/Injector/injector.hpp"
 
+#pragma comment(lib, "XInput9_1_0.lib")
+#pragma comment(lib, "XInput.lib")
+#include <xinput.h>
+
+#define M_PI 3.14159265358979323846
+
 struct Vec3
 {
 	float x;
@@ -35,6 +41,24 @@ int __cdecl CreateLookAtMatrixHook(void* outMatrix, Vec3* from, Vec3* to, Vec3* 
 	if (isDown && isLeft) Target = 360 - 135;
 	if (isDown && isRight) Target = 135;
 
+	XINPUT_STATE xState;
+	ZeroMemory(&xState, sizeof(XINPUT_STATE));
+	if (XInputGetState(0, &xState) == ERROR_SUCCESS)
+	{
+		float rx = xState.Gamepad.sThumbRX;
+		float ry = xState.Gamepad.sThumbRY;
+
+		float mag = sqrt(rx * rx + ry * ry);
+		if (mag > XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE)
+		{
+			rx /= mag;
+			ry /= mag;
+
+			Target = atan2(-rx, ry) * 180.0 / M_PI;
+			if (Target < 0) Target += 360;
+		}
+	}
+
 	int dir = CamAngle < Target ? 1 : -1;
 	dir = abs(CamAngle - Target) > abs(360 - abs((CamAngle - Target))) ? -dir : dir;
 	if (CamAngle != Target)
@@ -56,7 +80,7 @@ int __cdecl CreateLookAtMatrixHook(void* outMatrix, Vec3* from, Vec3* to, Vec3* 
 	if (CamAngle != 0)
 	{
 		DisableTilts = -1000;
-		float angle = CamAngle * 3.14f / 180.0f;
+		float angle = CamAngle * M_PI / 180.0f;
 		Vec3 newFrom;
 		newFrom.x = cos(angle) * (from->x - to->x) - sin(angle) * (from->y - to->y) + to->x;
 		newFrom.y = sin(angle) * (from->x - to->x) + cos(angle) * (from->y - to->y) + to->y;
