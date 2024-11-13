@@ -27,69 +27,72 @@ float CamAngle = 0;
 float CamSpeed;
 int __cdecl CreateLookAtMatrixHook(void* outMatrix, Vec3* from, Vec3* to, Vec3* up)
 {
-	float Target = 0;
-	bool isLeft = IsPressed(HK_Left);
-	bool isRight = IsPressed(HK_Right);
-	bool isUp = IsPressed(HK_Up);
-	bool isDown = IsPressed(HK_Down);
-
-	if (isLeft) Target = 360 - 85;
-	if (isRight) Target = 85;
-	if (isDown) Target = 180;
-	if (isUp && isLeft) Target = 360 - 43;
-	if (isUp && isRight) Target = 43;
-	if (isDown && isLeft) Target = 360 - 135;
-	if (isDown && isRight) Target = 135;
-
-	XINPUT_STATE xState;
-	ZeroMemory(&xState, sizeof(XINPUT_STATE));
-	if (XInputGetState(0, &xState) == ERROR_SUCCESS)
+	if (!*Game::IsPaused)
 	{
-		float rx = xState.Gamepad.sThumbRX;
-		float ry = xState.Gamepad.sThumbRY;
+		float Target = 0;
+		bool isLeft = IsPressed(HK_Left);
+		bool isRight = IsPressed(HK_Right);
+		bool isUp = IsPressed(HK_Up);
+		bool isDown = IsPressed(HK_Down);
 
-		float mag = sqrt(rx * rx + ry * ry);
-		if (mag > XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE)
+		if (isLeft) Target = 360 - 85;
+		if (isRight) Target = 85;
+		if (isDown) Target = 180;
+		if (isUp && isLeft) Target = 360 - 43;
+		if (isUp && isRight) Target = 43;
+		if (isDown && isLeft) Target = 360 - 135;
+		if (isDown && isRight) Target = 135;
+
+		XINPUT_STATE xState;
+		ZeroMemory(&xState, sizeof(XINPUT_STATE));
+		if (XInputGetState(0, &xState) == ERROR_SUCCESS)
 		{
-			rx /= mag;
-			ry /= mag;
+			float rx = xState.Gamepad.sThumbRX;
+			float ry = xState.Gamepad.sThumbRY;
 
-			Target = atan2(-rx, ry) * 180.0 / M_PI;
-			if (Target < 0) Target += 360;
+			float mag = sqrt(rx * rx + ry * ry);
+			if (mag > XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE)
+			{
+				rx /= mag;
+				ry /= mag;
+
+				Target = atan2(-rx, ry) * 180.0 / M_PI;
+				if (Target < 0) Target += 360;
+			}
 		}
-	}
 
-	int dir = CamAngle < Target ? 1 : -1;
-	dir = abs(CamAngle - Target) > abs(360 - abs((CamAngle - Target))) ? -dir : dir;
-	if (CamAngle != Target)
-	{
-		float step = *Game::DeltaTime * CamSpeed * dir;
-
-		if (abs(step) > abs(CamAngle - Target))
+		int dir = CamAngle < Target ? 1 : -1;
+		dir = abs(CamAngle - Target) > abs(360 - abs((CamAngle - Target))) ? -dir : dir;
+		if (CamAngle != Target)
 		{
-			CamAngle = Target;
+			float step = *Game::DeltaTime * CamSpeed * dir;
+
+			if (abs(step) > abs(CamAngle - Target))
+			{
+				CamAngle = Target;
+			}
+			else
+			{
+				CamAngle += step;
+				if (CamAngle > 360) CamAngle -= 360;
+				if (CamAngle < 0) CamAngle += 360;
+			}
+		}
+
+		if (CamAngle != 0)
+		{
+			DisableTilts = -1000;
+			float angle = CamAngle * M_PI / 180.0f;
+			Vec3 newFrom;
+			newFrom.x = cos(angle) * (from->x - to->x) - sin(angle) * (from->y - to->y) + to->x;
+			newFrom.y = sin(angle) * (from->x - to->x) + cos(angle) * (from->y - to->y) + to->y;
+			newFrom.z = from->z;
+			*from = newFrom;
 		}
 		else
 		{
-			CamAngle += step;
-			if (CamAngle > 360) CamAngle -= 360;
-			if (CamAngle < 0) CamAngle += 360;
+			DisableTilts = 0;
 		}
-	}
-
-	if (CamAngle != 0)
-	{
-		DisableTilts = -1000;
-		float angle = CamAngle * M_PI / 180.0f;
-		Vec3 newFrom;
-		newFrom.x = cos(angle) * (from->x - to->x) - sin(angle) * (from->y - to->y) + to->x;
-		newFrom.y = sin(angle) * (from->x - to->x) + cos(angle) * (from->y - to->y) + to->y;
-		newFrom.z = from->z;
-		*from = newFrom;
-	}
-	else
-	{
-		DisableTilts = 0;
 	}
 
 	return Game::eCreateLookAtMatrix(outMatrix, from, to, up);
@@ -107,7 +110,10 @@ void Init()
 
 		CamSpeed = iniReader.ReadFloat("CAMERA", "Speed", 600);
 		injector::MakeCALL(Game::HookAddr, CreateLookAtMatrixHook, true);
-		injector::WriteMemory<float*>(Game::DisableTiltsAddr, &DisableTilts, true);
+		if (Game::DisableTiltsAddr)
+		{
+			injector::WriteMemory<float*>(Game::DisableTiltsAddr, &DisableTilts, true);
+		}
 	}
 }
 

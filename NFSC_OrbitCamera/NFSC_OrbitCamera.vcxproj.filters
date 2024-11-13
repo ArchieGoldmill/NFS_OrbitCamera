@@ -8,12 +8,6 @@
     <Filter Include="Games">
       <UniqueIdentifier>{f2f50e04-1dde-49ca-8944-9d31390c8236}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Games\Carbon">
-      <UniqueIdentifier>{9df77eb7-d746-4a90-b68a-5e29935d2f49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Games\MostWanted">
-      <UniqueIdentifier>{df7622ae-844e-4ea8-9e7e-c636156f5188}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -21,14 +15,17 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Carbon.h">
-      <Filter>Games\Carbon</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Games</Filter>
     </ClInclude>
+    <ClInclude Include="Carbon.h">
+      <Filter>Games</Filter>
+    </ClInclude>
     <ClInclude Include="MostWanted.h">
-      <Filter>Games\MostWanted</Filter>
+      <Filter>Games</Filter>
+    </ClInclude>
+    <ClInclude Include="Underground2.h">
+      <Filter>Games</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

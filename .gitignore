@@ -364,6 +364,8 @@ FodyWeavers.xsd
 
 Debug Carbon/
 Debug MW/
+Debug UG2/
 Release Carbon/
 Release MW/
+Release UG2/
 *.rar
