@@ -8,6 +8,7 @@ namespace Game
 	const char* IniName = "NFSMWOrbitCamera.ini";
 
 	float* DeltaTime = (float*)0x009259BC;
+	bool* IsPaused = (bool*)0;
 	static auto eCreateLookAtMatrix = (int(__cdecl*)(void*, void*, void*, void*))0x006CF0A0;
 	void* HookAddr = (void*)0X0047DCBC;
 	void* DisableTiltsAddr = (void*)0X0047D506;

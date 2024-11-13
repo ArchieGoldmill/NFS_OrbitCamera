@@ -27,7 +27,7 @@ float CamAngle = 0;
 float CamSpeed;
 int __cdecl CreateLookAtMatrixHook(void* outMatrix, Vec3* from, Vec3* to, Vec3* up)
 {
-	if (!*Game::IsPaused)
+	if (!Game::IsPaused || !*Game::IsPaused)
 	{
 		float Target = 0;
 		bool isLeft = IsPressed(HK_Left);

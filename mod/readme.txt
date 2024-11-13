@@ -4,6 +4,7 @@ Description:
 This mod allows to rotate camera around the car while driving around.
 
 Supported games:
+- Undergound 2
 - Most Wanted
 - Carbon
 

@@ -8,6 +8,7 @@ namespace Game
 	const char* IniName = "NFSCOrbitCamera.ini";
 
 	float* DeltaTime = (float*)0x00A99A5C;
+	bool* IsPaused = (bool*)0;
 	static auto eCreateLookAtMatrix = (int(__cdecl*)(void*, void*, void*, void*))0x0071B430;
 	void* HookAddr = (void*)0x00492E5B;
 	void* DisableTiltsAddr = (void*)0x00492353;
